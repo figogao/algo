@@ -1,4 +1,4 @@
-package com.brave.venus.array;
+package com.algo.array;
 
 /**
  * 实现一个大小固定的有序数组，支持动态增删改操作

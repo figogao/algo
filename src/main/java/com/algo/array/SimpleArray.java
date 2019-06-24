@@ -1,4 +1,4 @@
-package com.brave.venus.array;
+package com.algo.array;
 
 /**
  * 简单测试数组

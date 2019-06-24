@@ -1,4 +1,4 @@
-package com.brave.venus.array.leecode;
+package com.algo.array.leecode;
 
 import java.util.Arrays;
 import java.util.LinkedList;

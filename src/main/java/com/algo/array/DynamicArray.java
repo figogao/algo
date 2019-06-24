@@ -1,4 +1,4 @@
-package com.brave.venus.array;
+package com.algo.array;
 
 /**
  * 实现一个支持动态扩容的数组

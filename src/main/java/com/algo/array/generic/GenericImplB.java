@@ -1,4 +1,4 @@
-package com.brave.venus.array.generic;
+package com.algo.array.generic;
 
 public class GenericImplB implements Generic<String> {
 
