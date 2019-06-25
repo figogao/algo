@@ -2,27 +2,25 @@ package com.algo.array;
 
 /**
  * 实现一个大小固定的有序数组，支持动态增删改操作
- * 泛型化
+ * 泛型方法,进行强壮为T
+ * 或者为泛型类，不需要声明为泛型方法
  *
- * 问题：使用"T extends Comparable<T>"泛型后，测试用例不能指定具体类型，会抛出异常。
- * @param <T>
- * @author figo
  */
-public class FixSortedArray<T extends Comparable<T>> {
+public class FixSortedArray2 {
 
-    public T[] array;
+    public Object[] array;
 
     private int size;
 
-    public FixSortedArray(int capity){
-        this.array = (T[]) new Comparable[capity];
+    public FixSortedArray2(int capity){
+        this.array = new Object[capity];
     }
 
     /**
      * insert & sort
      * @param t
      */
-    public void add(T t){
+    public <T extends Comparable<? super T>> void add(T t){
             if (size == 0) {
                 this.array[0] = t;
                 size ++;
@@ -30,7 +28,7 @@ public class FixSortedArray<T extends Comparable<T>> {
                 return;
             }
 
-            if (t.compareTo(array[size - 1]) >= 0) {
+            if (t.compareTo((T)array[size - 1]) >= 0) {
                 this.array[size] = t;
 
                 if (size < array.length){
@@ -43,7 +41,7 @@ public class FixSortedArray<T extends Comparable<T>> {
 
 
             for (int i = 0 ; i < size; i++) {
-                if (t.compareTo(array[i]) < 0) {
+                if (t.compareTo((T)array[i]) < 0) {
                     for (int j = size - 1; j >= i; j--){
                         if (size == array.length && j > 0){
                             array[j] = array[j - 1];;
@@ -64,8 +62,8 @@ public class FixSortedArray<T extends Comparable<T>> {
             }
     }
 
-    public T get(Integer index){
-        return array[index - 1];
+    public <T extends Comparable<? super T>> T get(Integer index){
+        return (T)array[index - 1];
     }
 
     public void remove(Integer index){
@@ -91,7 +89,7 @@ public class FixSortedArray<T extends Comparable<T>> {
         size--;
     }
 
-    public void update(Integer index, T t){
+    public <T extends Comparable<? super T>> void update(Integer index, T t){
         if (size <= 0 || index > size - 1) {
             return;
         }
@@ -105,8 +103,8 @@ public class FixSortedArray<T extends Comparable<T>> {
 
 
     public static void main(String [] args) {
-        FixSortedArray array = new FixSortedArray<>(5);
-        array.add(new Integer(12));
+        FixSortedArray2 array = new FixSortedArray2(5);
+        array.add(12);
         array.add(new Integer(5));
         array.add(new Integer(7));
         array.add(new Integer(5));
